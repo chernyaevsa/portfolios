@@ -2,7 +2,7 @@
 ## Запуск
 Обязательно нужно создать файл с переменными окружения (.env)
 ```
-    MYSQL_CONNECTION=
+MYSQL_CONNECTION=
 ```
 
 todo
