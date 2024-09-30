@@ -3,6 +3,8 @@ from waitress import serve
 from dotenv import load_dotenv
 import os
 
+import db
+
 load_dotenv() 
 
 app = Flask(__name__)
@@ -12,7 +14,13 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/profile')
+def profile():
+    return render_template('profile.html')
+
 if __name__ == "__main__":
+    ddd = db.Database()
+    ddd.get_profile_info()
     print("\n===Portfolio server===\n")
     host = os.getenv("HOST")
     port = os.getenv("PORT")
