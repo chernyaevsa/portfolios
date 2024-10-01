@@ -1,9 +1,10 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from waitress import serve
 from dotenv import load_dotenv
 import os
 
-import db
+import controllers.profile as profile
+
 
 load_dotenv() 
 
@@ -15,12 +16,12 @@ def index():
     return render_template('index.html')
 
 @app.route('/profile')
-def profile():
-    return render_template('profile.html')
+def profile_by_id():
+    id = request.args.get('id')
+    if id == None : return redirect("/", code=302)
+    return render_template('profile.html', profile=profile.get_profile_info(id))
 
 if __name__ == "__main__":
-    ddd = db.Database()
-    ddd.get_profile_info()
     print("\n===Portfolio server===\n")
     host = os.getenv("HOST")
     port = os.getenv("PORT")
