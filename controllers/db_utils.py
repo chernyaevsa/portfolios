@@ -16,8 +16,8 @@ class Database:
         result = self.connection.execute(query).fetchone()._asdict()
         return result
     
-    def get_profile_achivments(self, id : int):
-        query = sqla.text("SELECT * FROM achievement WHERE student_id = :id")
+    def get_profile_achievements(self, id : int):
+        query = sqla.text("SELECT * FROM achievements WHERE student_id = :id")
         query = query.bindparams(sqla.bindparam("id", id))
         result = []
         for r in self.connection.execute(query).all():

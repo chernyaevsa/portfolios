@@ -19,7 +19,9 @@ def index():
 def profile_by_id():
     id = request.args.get('id')
     if id == None : return redirect("/", code=302)
-    return render_template('profile.html', profile=profile.get_profile_info(id))
+    return render_template('profile.html', 
+                           profile=profile.get_profile_info(id),
+                           achievments=profile.get_profile_achivments(id))
 
 if __name__ == "__main__":
     print("\n===Portfolio server===\n")
