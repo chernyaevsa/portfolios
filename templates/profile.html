@@ -1,19 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
     
-    <div class="row">
-        <div class="col-md-4 p-2">
-            <img class="img-fluid" src="{{ url_for('static', filename='images/photo_placeholder.png') }}">
+        <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-md-12 col-xl-4">
+                    <div class="text-end">
+                        <a class="text-decoration-none" href="/profile_edit?id={{ profile['id'] }}"><h5>🖊️</h5></a>
+                    </div>
+                    <div class="text-center">
+                        <div class="mt-3 mb-4">
+                            <img class="img-fluid w-50" src="{{ url_for('static', filename='images/photo_placeholder.png') }}">
+                        </div>
+                        <span class="display-6">{{ profile['lastname'] }} {{ profile['firstname'] }} {{ profile['patronymic'] }}</span><br>
+                        <span>Дата рождения: {{ profile['date_of_birth'] }}</span><br>
+                        <span>Телефон: <a href="tel:{{ profile['phone'] }}">{{ profile['phone'] }}</a></span><br>
+                        <span>Почта: <a href="mail:{{ profile['email'] }}">{{ profile['email'] }}</a></span><br>
+                    </div>                    
+                </div>
+            </div>
         </div>
-        <div class="col-md-6 align-items-center p-2">
-            <h4 class="w-100">{{ profile['lastname'] }} {{ profile['firstname'] }} {{ profile['patronymic'] }}</h4>
-            <span>Дата рождения: {{ profile['date_of_birth'] }}</span><br>
-            <span>Телефон: <a href="tel:{{ profile['phone'] }}">{{ profile['phone'] }}</a></span><br>
-            <span>Почта: <a href="mail:{{ profile['email'] }}">{{ profile['email'] }}</a></span><br>
-        </div>
-        <div class="col-md-2">
-            <a class="text-decoration-none" href="/profile_edit?id={{ profile['id'] }}"><h5>🖊️</h5></a>
-        </div>
-    </div>
 
 {% endblock %}
