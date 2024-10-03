@@ -21,7 +21,7 @@ def profile_by_id():
     if id == None : return redirect("/", code=302)
     return render_template('profile.html', 
                            profile=profile.get_profile_info(id),
-                           achievments=profile.get_profile_achivments(id))
+                           achievements=profile.get_profile_achievements(id))
 
 if __name__ == "__main__":
     print("\n===Portfolio server===\n")
